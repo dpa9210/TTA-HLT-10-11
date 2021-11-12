@@ -1,0 +1,4 @@
+number = 1
+for fourTimesCounter in range(4, 400, 4):
+  print(number, "x 4 = ", fourTimesCounter)
+  number = number + 1
