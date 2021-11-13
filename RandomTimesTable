@@ -1,0 +1,5 @@
+#RandomXTable
+
+number = int(input("Enter a umber to multiply"))
+for randomNumLoop in range(number, 12,)
+number = number +1
