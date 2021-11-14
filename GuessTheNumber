@@ -1,23 +1,32 @@
 #Guess the number
 import random
-print ("\n\t Hello and welcome to the Guess your number game \n\n")
+
+print ("Hello and welcome to the Guess your number game \n\n")
 
 myName = input("Enter your name: ")
 
 print("\n\t Well", myName, "I am thinking of a number between 1 and 10\n")
 
-guess = int(input("\n\nTake a guess: "))
 number = random.randint(1,10)
-while number < 6:
+tries = 0
+
+def Guess(playerGuess):
+  global tries
+  tries = tries + 1
+  if tries >= 6:
+    print("\nYou have run out of tries")
+    return
+  else:
+    print("You have", 6-tries, "tries remaining")
+
+
+  if int(playerGuess) == number:
+    print("\nYour guess was right, you win")
+  elif int(playerGuess) > number:
     
-    if guess >= number:
-        print("You are close", myName, "but the number you guessed is higher than my number which was", number, "try again!")
-        number = random.randint(1,10)
-        guess = int(input("\n\nTake another guess: "))
-    elif guess <= number:
-        print("You are close", myName, "but the number you guessed is lower than my number which was", number, "try again!")
-        number = random.randint(1,10)
-        guess = int(input("\n\nTake another guess: "))
-    elif guess == number:
-        print("Good job ", myName, " you were right, my number is", number)
-        break
+    Guess(input("\nYour guess is high, guess again: "))
+  elif int(playerGuess) < number:
+    
+    Guess(input("\nYour guess is low, guess again: "))
+
+Guess(input("Take a guess: "))
